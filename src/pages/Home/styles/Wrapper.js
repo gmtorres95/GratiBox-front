@@ -35,6 +35,10 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
   }
+
+  a {
+    margin: 8px;
+  }
 `;
 
 export default Wrapper;
