@@ -6,8 +6,8 @@ const URL = process.env.REACT_APP_API_BASE_URL;
 export function login(body, setUser, setIsButtonEnabled, navigate) {
   axios.post(URL+'/sign-in', body)
     .then((resp) => {
-      localStorage.setItem("user", JSON.stringify(resp));
-      setUser(resp);
+      localStorage.setItem('user', JSON.stringify(resp.data));
+      setUser(resp.data);
       navigate('/main');
     })
     .catch((err) => {
