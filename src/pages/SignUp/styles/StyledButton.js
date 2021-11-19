@@ -9,6 +9,7 @@ const StyledButton = styled.button`
   color: #FFF;
   font-size: 36px;
   font-weight: 700;
+  opacity: ${(props) => (props.isButtonEnabled ? '1' : '0.5')};
 `;
 
 export default StyledButton;

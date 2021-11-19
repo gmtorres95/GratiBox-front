@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router';
+import UserContext from './contexts/userContext';
 
 export default function App() {
-  return <Outlet />;
+  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")));
+  return (
+    <UserContext.Provider value={{user, setUser}}>
+      <Outlet />
+    </UserContext.Provider>
+  );
 }
