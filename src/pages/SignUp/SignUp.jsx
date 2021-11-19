@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import Swal from 'sweetalert2';
 
 import { createNewUser } from '../../services/signUpServices';
-import UserContext from '../../contexts/userContext';
 import sendAlert from '../../helpers/sendAlert';
 import Wrapper from './styles/Wrapper';
 import SignUpForm from './styles/SignUpForm';
@@ -17,7 +15,6 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmation, setConfirmation] = useState('');
   const [isButtonEnabled, setIsButtonEnabled] = useState(true);
-  const {setUser} = useContext(UserContext);
   const navigate = useNavigate();
 
   function signUpHelper(e) {
