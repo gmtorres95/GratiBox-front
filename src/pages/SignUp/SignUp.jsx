@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { createNewUser } from '../../services/signUpServices';
 import sendAlert from '../../helpers/sendAlert';
@@ -63,6 +64,7 @@ export default function SignUp() {
         <StyledButton type="submit" isButtonEnabled={isButtonEnabled}>
           {isButtonEnabled ? 'Cadastrar' : <Loading />}
         </StyledButton>
+        <Link to="/sign-in">Já sou grato</Link>
       </SignUpForm>
     </Wrapper>
   );
