@@ -1,45 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import { createNewUser } from '../../services/signUpServices';
-import sendAlert from '../../helpers/sendAlert';
+import { login } from '../../services/signInServices';
+import UserContext from '../../contexts/userContext';
 import Wrapper from './styles/Wrapper';
-import SignUpForm from './styles/SignUpForm';
+import SignInForm from './styles/SignInForm';
 import StyledButton from './styles/StyledButton';
 import AuthenticationInput from '../../commonStyles/AuthenticationInput';
 import Loading from '../../commonComponents/Loading';
 
 export default function SignUp() {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmation, setConfirmation] = useState('');
   const [isButtonEnabled, setIsButtonEnabled] = useState(true);
   const navigate = useNavigate();
+  const {setUser} = useContext(UserContext);
 
-  function signUpHelper(e) {
+  function signInHelper(e) {
     e.preventDefault();
-    if(password !== confirmation) {
-      sendAlert('Erro!','As duas senhas devem ser idênticas!','warning');
-      return;
-    }
-
     setIsButtonEnabled(false);
-    createNewUser({name, email, password}, setIsButtonEnabled, navigate);
+    login({email, password}, setUser, setIsButtonEnabled, navigate);
   }
 
   return (
     <Wrapper>
       <h1>Bem vindo ao GratiBox</h1>
-      <SignUpForm onSubmit={isButtonEnabled ? signUpHelper : e => e.preventDefault()}>
-        <AuthenticationInput
-          type="text"
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => {setName(e.target.value )}}
-          required
-        />
+      <SignInForm onSubmit={isButtonEnabled ? signInHelper : e => e.preventDefault()}>
         <AuthenticationInput
           type="email"
           placeholder="Email"
@@ -54,18 +41,11 @@ export default function SignUp() {
           onChange={(e) => {setPassword(e.target.value )}}
           required
         />
-        <AuthenticationInput
-          type="password"
-          placeholder="Confirmar senha"
-          value={confirmation}
-          onChange={(e) => {setConfirmation(e.target.value )}}
-          required
-        />
         <StyledButton type="submit" isButtonEnabled={isButtonEnabled}>
-          {isButtonEnabled ? 'Cadastrar' : <Loading />}
+          {isButtonEnabled ? 'Login' : <Loading />}
         </StyledButton>
-        <Link to="/sign-in">Já sou grato</Link>
-      </SignUpForm>
+        <Link to="/sign-up">Ainda não sou grato</Link>
+      </SignInForm>
     </Wrapper>
   );
 }

@@ -6,6 +6,7 @@ import GlobalStyle from './commonStyles/GlobalStyle';
 import App from './App';
 import Home from './pages/Home/Home';
 import SignUp from './pages/SignUp/SignUp';
+import SignIn from './pages/SignIn/SignIn';
 
 const rootElement = document.getElementById('root');
 render(
@@ -15,6 +16,7 @@ render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />
+        <Route path="sign-in" element={<SignIn />} />
       </Route>
     </Routes>
   </BrowserRouter>,
