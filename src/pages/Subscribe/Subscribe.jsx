@@ -76,8 +76,6 @@ export default function Subscribe() {
     if(incense) body.items.push(2);
     if(organic) body.items.push(3);
 
-    console.log(body)
-
     registerSubscription(body, user.token, setIsButtonEnabled, navigate)
   }
 
