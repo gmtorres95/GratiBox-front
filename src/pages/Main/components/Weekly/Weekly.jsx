@@ -15,7 +15,7 @@ export default function Weekly() {
         Você recebe um box por semana.
         Ideal para quem quer exercer a gratidão todos os dias.
       </h2>
-      <StyledButton onClick={() => navigate('/subscribe/weekly')}>Assinar</StyledButton>
+      <StyledButton onClick={() => navigate('/subscribe/Semanal')}>Assinar</StyledButton>
     </Wrapper>
   );
 }
