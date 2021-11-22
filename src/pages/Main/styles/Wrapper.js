@@ -3,16 +3,25 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
+  min-height: 540px;
   padding: 0px 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
-  h1 {
-    font-size: 26px;
-    font-weight: 500;
-    text-align: left;
-    padding: 24px 8px;
+  header {
+    width: 80px;
+    height: 28px;
+    border-radius: 0px 0px 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    background-color: #E63C80;
   }
 `;
 

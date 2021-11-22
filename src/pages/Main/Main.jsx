@@ -6,6 +6,7 @@ import UserContext from '../../contexts/userContext';
 import Wrapper from './styles/Wrapper';
 import Loading from '../../commonComponents/Loading';
 import Details from './components/Details/Details';
+import { HiLogout } from 'react-icons/hi';
 
 export default function Main() {
   const [display, setDisplay] = useState(false);
@@ -18,10 +19,15 @@ export default function Main() {
     else getUserPlan(user.token, setDisplay, setSubscription);
   }, [user, navigate]);
 
+  function logout() {
+    localStorage.clear();
+    window.open('/','_self');
+  }
+
   return (
     <Wrapper>
-      <h1>Bom te ver por aqui, {user.name}</h1>
-      {display ? (subscription.isActive ? <Details subscription={subscription} /> : '') : <Loading />}
+      <header onClick={logout}>Sair<HiLogout /></header>
+      {display ? (subscription.isActive ? <Details subscription={subscription} /> : 'OK') : <Loading />}
     </Wrapper>
   );
 }
