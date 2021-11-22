@@ -3,7 +3,6 @@ import { Outlet, useNavigate } from 'react-router';
 import UserContext from './contexts/userContext';
 
 export default function App() {
-  // const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")));
   const [user, setUser] = useState(localStorage.length ? JSON.parse(localStorage.getItem("user")) : undefined);
   const navigate = useNavigate();
 
