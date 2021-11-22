@@ -4,7 +4,7 @@ import sendAlert from '../helpers/sendAlert';
 const URL = process.env.REACT_APP_API_BASE_URL;
 
 export function login(body, setUser, setIsButtonEnabled, navigate) {
-  axios.post(URL+'sign-in', body)
+  axios.post(URL+'/sign-in', body)
     .then((resp) => {
       localStorage.setItem('user', JSON.stringify(resp.data));
       setUser(resp.data);
