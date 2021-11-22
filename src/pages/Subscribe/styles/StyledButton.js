@@ -9,6 +9,7 @@ const StyledButton = styled.button`
   color: #FFF;
   background-color: #8C97EA;
   margin-top: 8px;
+  opacity: ${(props) => (props.isButtonEnabled ? '1' : '0.7')};
 `;
 
 export default StyledButton;

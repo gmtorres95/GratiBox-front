@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router';
+import React, { useContext, useState } from 'react';
+import { useParams, useNavigate } from 'react-router';
 
 import Banner from '../../assets/image03.jpg';
+import { registerSubscription } from '../../services/subscribeServices';
+import UserContext from '../../contexts/userContext';
 import sendAlert from '../../helpers/sendAlert';
+import Loading from '../../commonComponents/Loading';
 import Wrapper from './styles/Wrapper';
 import Header from '../../commonComponents/Header/Header';
 import Card from './styles/Card';
@@ -17,6 +20,7 @@ export default function Subscribe() {
   const [showDays, setShowDays] = useState(true);
   const [showItems, setShowItems] = useState(false);
   const [showDelivery, setShowDelivery] = useState(false);
+  const [isButtonEnabled, setIsButtonEnabled] = useState(true);
 
   const [plan, setPlan] = useState(useParams().planType);
   const [deliveryDay, setDeliveryDay] = useState('');
@@ -29,6 +33,9 @@ export default function Subscribe() {
   const [zipcode, setZipcode] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
+
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   function planSelectorHelper(e) {
     e.preventDefault();
@@ -48,11 +55,30 @@ export default function Subscribe() {
 
   function deliveryHelper(e) {
     e.preventDefault();
+    // setIsButtonEnabled(false);
 
     if (name.length < 5 || !address || zipcode.length < 9 || !city || ! state) {
       sendAlert('Dados inválidos!','Preencha todos os campos corretamente','error');
       return;
     }
+
+    const body ={
+      city,
+      state,
+      name,
+      address,
+      zipcode: zipcode.replace('-',''),
+      dayId: deliveryDay,
+      items: [],
+    };
+
+    if(tea) body.items.push(1);
+    if(incense) body.items.push(2);
+    if(organic) body.items.push(3);
+
+    console.log(body)
+
+    registerSubscription(body, user.token, setIsButtonEnabled, navigate)
   }
 
   return (
@@ -102,9 +128,15 @@ export default function Subscribe() {
           </>}
         </Card>
         {showDelivery ? 
-          <StyledButton onClick={deliveryHelper}>Finalizar</StyledButton>
+          <StyledButton
+            onClick={isButtonEnabled ? deliveryHelper : (e) => e.preventDefault()}
+            isButtonEnabled={isButtonEnabled}
+          >{isButtonEnabled ? 'Finalizar' : <Loading />}</StyledButton>
           :
-          <StyledButton onClick={planSelectorHelper}>Próximo</StyledButton>
+          <StyledButton
+            isButtonEnabled
+            onClick={planSelectorHelper}
+          >Próximo</StyledButton>
         }
       </form>
     </Wrapper>

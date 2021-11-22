@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cep from 'cep-promise';
 
-import { Checkmark } from '../styles/StyledIcons';
-
 export default function SelectDelivery(props) {
   const {
     name,
@@ -29,7 +27,7 @@ export default function SelectDelivery(props) {
   useEffect(() => {
     setCity(cepData.city);
     setState(cepData.state);
-  }, [cepData]);
+  }, [cepData, setCity, setState]);
 
   return (
     <>
