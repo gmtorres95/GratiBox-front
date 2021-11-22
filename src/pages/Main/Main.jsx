@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router';
 import { getUserPlan } from '../../services/mainServices';
 import UserContext from '../../contexts/userContext';
 import Wrapper from './styles/Wrapper';
+import Header from '../../commonComponents/Header/Header';
 import Loading from '../../commonComponents/Loading';
 import Details from './components/Details/Details';
-import { HiLogout } from 'react-icons/hi';
+import Plans from './components/Plans/Plans';
 
 export default function Main() {
   const [display, setDisplay] = useState(false);
@@ -19,15 +20,10 @@ export default function Main() {
     else getUserPlan(user.token, setDisplay, setSubscription);
   }, [user, navigate]);
 
-  function logout() {
-    localStorage.clear();
-    window.open('/','_self');
-  }
-
   return (
     <Wrapper>
-      <header onClick={logout}>Sair<HiLogout /></header>
-      {display ? (subscription.isActive ? <Details subscription={subscription} /> : 'OK') : <Loading />}
+      <Header />
+      {display ? (subscription.isActive ? <Details subscription={subscription} /> : <Plans />) : <Loading />}
     </Wrapper>
   );
 }

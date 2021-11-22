@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Banner from '../../../../assets/image03.jpg';
 import convertToDate from '../../../../helpers/convertToDate';
-import UserContext from '../../../../contexts/userContext';
 import Wrapper from './styles/Wrapper';
 import Card from './styles/Card';
 import getNextDeliveries from '../../../../helpers/getNextDeliveries';
@@ -14,11 +13,10 @@ export default function Details(props) {
     items,
   } = props.subscription;
   const nextDeliveries = getNextDeliveries(plan.name, plan.delivery_day);
-  const { user } = useContext(UserContext);
 
   return (
     <Wrapper>
-      <h1>Bom te ver por aqui, {user.name}</h1>
+      
       <h2>“Agradecer é arte de atrair coisas boas”</h2>
       <Card>
         <img src={Banner} alt="Banner" />
