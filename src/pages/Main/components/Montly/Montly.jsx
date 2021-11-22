@@ -15,7 +15,7 @@ export default function Montly() {
         Você recebe um box por mês. 
         Ideal para quem está começando agora.
       </h2>
-      <StyledButton onClick={() => navigate('/subscribe/montly')}>Assinar</StyledButton>
+      <StyledButton onClick={() => navigate('/subscribe/Mensal')}>Assinar</StyledButton>
     </Wrapper>
   );
 }
