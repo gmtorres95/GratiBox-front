@@ -2,7 +2,7 @@
 
 <img src="./public/logo192.png" />
 
-Get a montly subscription of natural products and meditation equipments!  
+Get a monthly subscription of natural products and meditation equipments!  
 Check the back-end of this application [here](https://github.com/gmtorres95/GratiBox-back)  
 Check the this application in production [here](https://gratibox-eight.vercel.app)
 
