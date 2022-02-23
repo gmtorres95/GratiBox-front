@@ -28,12 +28,6 @@ $ git clone https://github.com/gmtorres95/GratiBox-front
 $ npm i
 ```
 
-### Compile the code
-
-```bash
-$ npm run build
-```
-
 ### Run the application
 
 ```bash
