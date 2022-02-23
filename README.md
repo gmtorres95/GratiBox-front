@@ -1,6 +1,4 @@
-# GratiBox (front-end)
-
-<img src="./public/logo192.png" />
+# <img src="./public/favicon.ico" height="24px" />  GratiBox (front-end)
 
 Get a monthly subscription of natural products and meditation equipments!  
 Check the back-end of this application [here](https://github.com/gmtorres95/GratiBox-back)  
@@ -13,6 +11,10 @@ Check the this application in production [here](https://gratibox-eight.vercel.ap
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white" />
 </div>
+
+## Preview
+
+<img src="./public/preview.gif" height="480px" />
 
 ## How to run
 
@@ -38,4 +40,4 @@ $ npm run build
 $ npm start
 ```
 
-The server will automatically start at localhost:3000/ on your favorite browser
+The server will automatically start at localhost:3000/
